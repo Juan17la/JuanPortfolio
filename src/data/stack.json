@@ -1,0 +1,28 @@
+{
+  "main": [
+    { "name": "Java", "icon": "java" },
+    { "name": "Spring Boot", "icon": "springboot" },
+    { "name": "React", "icon": "react" },
+    { "name": "TailwindCSS", "icon": "tailwindcss" },
+    { "name": "HTML", "icon": "html5" },
+    { "name": "CSS", "icon": "css3" },
+    { "name": "PostgreSQL", "icon": "postgresql" },
+    { "name": "Node.js", "icon": "nodedotjs" },
+    { "name": "TypeScript", "icon": "typescript" }
+  ],
+  "other": [
+    { "name": "MongoDB", "icon": "mongodb" },
+    { "name": "C#", "icon": "csharp" },
+    { "name": ".NET", "icon": "dotnet" },
+    { "name": "Python", "icon": "python" },
+    { "name": "Kotlin", "icon": "kotlin" }
+  ],
+  "tools": [
+    { "name": "Git", "icon": "git" },
+    { "name": "Docker", "icon": "docker" },
+    { "name": "Figma", "icon": "figma" },
+    { "name": "Jira", "icon": "jira" },
+    { "name": "Notion", "icon": "notion" },
+    { "name": "Linux", "icon": "linux" }
+  ]
+}

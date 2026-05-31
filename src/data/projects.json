@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Nexus Commerce",
+    "brief": "A fullstack e-commerce platform with real-time inventory and AI recommendations.",
+    "description": "Nexus Commerce is a scalable e-commerce solution built with microservices architecture. It features real-time inventory tracking, AI-powered product recommendations, and a custom admin dashboard. The platform handles thousands of concurrent users with optimized database queries and caching strategies.",
+    "tech": ["react", "typescript", "nodejs", "postgresql", "tailwindcss"],
+    "specialities": ["frontend", "backend", "devops"],
+    "images": ["assets/project1-1.jpg", "assets/project1-2.jpg", "assets/project1-3.jpg"],
+    "category": "starproject"
+  },
+  {
+    "id": 2,
+    "name": "Ghost Tasker",
+    "brief": "A hauntingly efficient task management app with dark mode aesthetics.",
+    "description": "Ghost Tasker is a productivity application designed for developers who appreciate minimalist, dark interfaces. It includes kanban boards, time tracking, pomodoro integration, and team collaboration features. The UI focuses on reducing cognitive load while maintaining powerful functionality.",
+    "tech": ["react", "spring", "java", "postgresql", "docker"],
+    "specialities": ["frontend", "backend"],
+    "images": ["assets/project2-1.jpg", "assets/project2-2.jpg", "assets/project2-3.jpg"],
+    "category": "personalproject"
+  },
+  {
+    "id": 3,
+    "name": "Void Terminal",
+    "brief": "A retro-styled browser terminal emulator with custom command parsing.",
+    "description": "Void Terminal is a playful browser-based terminal emulator that mimics the look and feel of classic CRT monitors. It supports custom commands, file system simulation, and easter eggs. Built as an experimental project to explore DOM manipulation and parsing algorithms.",
+    "tech": ["typescript", "html", "css", "python"],
+    "specialities": ["frontend", "AI"],
+    "images": ["assets/project3-1.jpg", "assets/project3-2.jpg", "assets/project3-3.jpg"],
+    "category": "sillyproject"
+  }
+]

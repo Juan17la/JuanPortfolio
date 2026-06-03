@@ -49,7 +49,7 @@ export default function GlassNav() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 py-5 px-4">
       <div className="mx-auto max-w-6xl">
-        <nav className="glass-nav flex items-center justify-between h-14 px-2 pl-5 pr-2">
+        <nav className="glass-nav flex items-center justify-between h-14 px-5">
           {/* Logo */}
           <a
             href="#"

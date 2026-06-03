@@ -57,13 +57,13 @@ export function AboutMe() {
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="M 20 8 Q 38 5, 55 16" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="0.3" />
-            <path d="M 60 24 Q 62 32, 55 44" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="0.3" />
-            <path d="M 48 56 Q 32 58, 20 66" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="0.3" />
-            <path d="M 20 74 Q 25 82, 38 86" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="0.3" />
-            <circle cx="55" cy="16" r="0.7" fill="rgba(255,255,255,0.3)" />
-            <circle cx="55" cy="44" r="0.7" fill="rgba(255,255,255,0.3)" />
-            <circle cx="20" cy="66" r="0.7" fill="rgba(255,255,255,0.3)" />
+            <path d="M 20 8 Q 38 5, 55 16" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="0.5" />
+            <path d="M 60 24 Q 62 32, 55 44" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="0.5" />
+            <path d="M 48 56 Q 32 58, 20 66" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="0.5" />
+            <path d="M 20 74 Q 25 82, 38 86" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="0.5" />
+            <circle cx="55" cy="16" r="0.9" fill="rgba(255,255,255,0.6)" />
+            <circle cx="55" cy="44" r="0.9" fill="rgba(255,255,255,0.6)" />
+            <circle cx="20" cy="66" r="0.9" fill="rgba(255,255,255,0.6)" />
           </svg>
 
           {/* Nodes */}
@@ -124,7 +124,7 @@ export function AboutMe() {
           <div
             className="absolute left-4.75 top-4 bottom-4 w-px"
             style={{
-              background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.2) 5%, rgba(255,255,255,0.2) 95%, transparent)",
+              background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.4) 5%, rgba(255,255,255,0.4) 95%, transparent)",
             }}
           />
           <div className="flex flex-col gap-8">

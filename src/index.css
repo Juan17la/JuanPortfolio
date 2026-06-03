@@ -74,11 +74,12 @@ body::before {
   background: rgba(255, 255, 255, 0.025);
   backdrop-filter: blur(20px) saturate(1.2);
   -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 1rem;
   box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 0 12px rgba(255, 255, 255, 0.06);
   overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
               box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1),
@@ -93,9 +94,9 @@ body::before {
   padding: 1px;
   background: linear-gradient(
     160deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.03) 40%,
-    rgba(255, 255, 255, 0.08) 100%
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    rgba(255, 255, 255, 0.18) 100%
   );
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
@@ -127,10 +128,11 @@ body::before {
 
 .glass-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.30);
   box-shadow:
     0 12px 40px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 20px rgba(255, 255, 255, 0.10);
 }
 
 /* Glass container - progressive edge blur */
@@ -139,11 +141,12 @@ body::before {
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(28px) saturate(1.2);
   -webkit-backdrop-filter: blur(28px) saturate(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 1.25rem;
   box-shadow:
     0 6px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 0 14px rgba(255, 255, 255, 0.05);
   overflow: hidden;
 }
 
@@ -173,11 +176,12 @@ body::before {
   background: rgba(10, 10, 15, 0.65);
   backdrop-filter: blur(24px) saturate(1.2);
   -webkit-backdrop-filter: blur(24px) saturate(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 9999px;
   box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 0 12px rgba(255, 255, 255, 0.05);
 }
 
 /* Tab hover pill - white glow */

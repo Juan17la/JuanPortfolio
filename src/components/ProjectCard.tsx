@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Star, User, Zap } from "lucide-react";
 
 interface Project {
@@ -14,8 +14,8 @@ interface Project {
 
 const categoryConfig: Record<string, { label: string; color: string; icon: React.ReactNode }> = {
   starproject: { label: "Star", color: "#d4a843", icon: <Star className="w-3 h-3" /> },
-  personalproject: { label: "Personal", color: "#5a8a6e", icon: <User className="w-3 h-3" /> },
-  sillyproject: { label: "Silly", color: "#6b9ec7", icon: <Zap className="w-3 h-3" /> },
+  personalproject: { label: "Personal", color: "#7a9eff", icon: <User className="w-3 h-3" /> },
+  sillyproject: { label: "Silly", color: "#9ab8ff", icon: <Zap className="w-3 h-3" /> },
 };
 
 interface ProjectCardProps {
@@ -25,6 +25,7 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   const [activeImage, setActiveImage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
   const category = categoryConfig[project.category] || categoryConfig.sillyproject;
 
   useEffect(() => {
@@ -35,16 +36,33 @@ export function ProjectCard({ project }: ProjectCardProps) {
     return () => clearInterval(interval);
   }, [isHovered, project.images.length]);
 
+  // Mouse spotlight tracking
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--mouse-x', `${x}%`);
+      card.style.setProperty('--mouse-y', `${y}%`);
+    };
+    card.addEventListener('mousemove', handleMouseMove);
+    return () => card.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
     <article
-      className="relative w-full glass rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_30px_rgba(90,138,110,0.12)] hover:border-[#5a8a6e]/30 group"
+      ref={cardRef}
+      className="relative w-full glass-card overflow-hidden group"
+      style={{ '--mouse-x': '50%', '--mouse-y': '50%' } as React.CSSProperties}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
         setIsHovered(false);
         setActiveImage(0);
       }}
     >
-      {/* Category tag */}
+      {/* Category tag - keeps its color */}
       <div
         className="absolute top-3 right-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider"
         style={{
@@ -58,15 +76,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Image carousel area */}
-      <div className="relative w-full h-[180px] overflow-hidden bg-[#0a0a0a]">
+      <div className="relative w-full h-[180px] overflow-hidden bg-surface/40">
         {project.images.map((img, i) => (
           <div
             key={i}
             className="absolute inset-0 flex items-center justify-center transition-opacity duration-700"
             style={{ opacity: i === activeImage ? 1 : 0 }}
           >
-            <div className="w-full h-full flex items-center justify-center bg-[#1a1a1a]/50">
-              <span className="text-[#888888] text-xs font-medium">{img}</span>
+            <div className="w-full h-full flex items-center justify-center bg-surface/50">
+              <span className="text-text-muted text-xs font-medium">{img}</span>
             </div>
           </div>
         ))}
@@ -77,7 +95,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               key={i}
               className="w-1.5 h-1.5 rounded-full transition-all duration-300"
               style={{
-                backgroundColor: i === activeImage ? "#5a8a6e" : "rgba(255,255,255,0.15)",
+                backgroundColor: i === activeImage ? "#ffffff" : "rgba(255,255,255,0.15)",
                 transform: i === activeImage ? "scale(1.3)" : "scale(1)",
               }}
             />
@@ -91,21 +109,21 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       {/* Content */}
       <div className="p-5 flex flex-col">
-        <h3 className="font-[family-name:var(--font-display)] text-lg text-[#f0f0f0] mb-2 group-hover:text-[#5a8a6e] transition-colors duration-300">
+        <h3 className="font-display text-lg text-text-primary mb-2 group-hover:text-white transition-colors duration-300">
           {project.name}
         </h3>
-        <p className="text-sm text-[#c8c8c8] leading-relaxed mb-4 line-clamp-2">
+        <p className="text-sm text-text-secondary leading-relaxed mb-4 line-clamp-2">
           {project.brief}
         </p>
 
-        {/* Tech icons */}
+        {/* Tech icons - monochrome white */}
         <div className="flex items-center gap-2 mb-3 flex-wrap">
           {project.tech.map((tech) => (
             <img
               key={tech}
-              src={`https://cdn.simpleicons.org/${tech}/5a8a6e`}
+              src={`https://cdn.simpleicons.org/${tech}/ffffff`}
               alt={`${tech} icon`}
-              className="w-5 h-5 opacity-70 hover:opacity-100 transition-opacity duration-200"
+              className="w-5 h-5 opacity-50 hover:opacity-100 transition-opacity duration-200"
               loading="lazy"
             />
           ))}
@@ -116,7 +134,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.specialities.map((spec) => (
             <span
               key={spec}
-              className="px-2 py-0.5 text-[10px] uppercase tracking-wider rounded-md bg-[#2a2a2a]/60 text-[#888888] border border-[#2a2a2a]/60"
+              className="px-2 py-0.5 text-[10px] uppercase tracking-wider rounded-md bg-white/5 text-text-muted border border-white/10"
             >
               {spec}
             </span>

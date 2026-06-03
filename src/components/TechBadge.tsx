@@ -10,16 +10,16 @@ interface TechBadgeProps {
 
 const colorMap = {
   moss: {
-    bg: "rgba(90, 138, 110, 0.12)",
-    border: "rgba(90, 138, 110, 0.35)",
-    text: "#5a8a6e",
-    glow: "rgba(90, 138, 110, 0.2)",
+    bg: "rgba(122, 158, 255, 0.12)",
+    border: "rgba(122, 158, 255, 0.35)",
+    text: "#7a9eff",
+    glow: "rgba(122, 158, 255, 0.2)",
   },
   blue: {
-    bg: "rgba(107, 158, 199, 0.12)",
-    border: "rgba(107, 158, 199, 0.35)",
-    text: "#6b9ec7",
-    glow: "rgba(107, 158, 199, 0.2)",
+    bg: "rgba(150, 180, 255, 0.12)",
+    border: "rgba(150, 180, 255, 0.35)",
+    text: "#9ab8ff",
+    glow: "rgba(150, 180, 255, 0.2)",
   },
   yellow: {
     bg: "rgba(212, 168, 67, 0.12)",

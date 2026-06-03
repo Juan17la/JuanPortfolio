@@ -1,3 +1,5 @@
+import { useRef, useState } from "react";
+import { motion } from "motion/react";
 import { Globe, Code2, Mail, AtSign } from "lucide-react";
 
 interface SocialButtonProps {
@@ -7,6 +9,9 @@ interface SocialButtonProps {
 }
 
 export function SocialButton({ type, username, url }: SocialButtonProps) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
   const icons = {
     linkedin: Globe,
     github: Code2,
@@ -23,36 +28,51 @@ export function SocialButton({ type, username, url }: SocialButtonProps) {
 
   const Icon = icons[type];
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const distX = (e.clientX - centerX) * 0.15;
+    const distY = (e.clientY - centerY) * 0.15;
+    setPosition({ x: distX, y: distY });
+  };
+
+  const handleMouseLeave = () => {
+    setPosition({ x: 0, y: 0 });
+  };
+
   const handleClick = (e: React.MouseEvent) => {
     if (type === "gmail") {
       e.preventDefault();
-      const user = "juandiegolopezarias07";
-      const domain = "gmail.com";
-      window.location.href = `mailto:${user}@${domain}`;
+      window.location.href = `mailto:juandiegolopezarias07@gmail.com`;
     }
   };
 
   return (
-    <a
+    <motion.a
+      ref={ref}
       href={url || "#"}
       onClick={type === "gmail" ? handleClick : undefined}
       target={type !== "gmail" ? "_blank" : undefined}
       rel={type !== "gmail" ? "noopener noreferrer" : undefined}
-      className="group flex items-center gap-3 px-5 py-3 glass rounded-lg
-                 transition-all duration-300 hover:border-[#5a8a6e]/40
-                 hover:shadow-[0_0_20px_rgba(90,138,110,0.15)]
-                 focus:outline-none focus:ring-2 focus:ring-[#5a8a6e]/50"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      animate={{ x: position.x, y: position.y }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+      className="group flex items-center gap-3 px-5 py-3 glass-card
+                 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
       aria-label={`${labels[type]}: ${username}`}
     >
-      <Icon className="w-5 h-5 text-[#888888] group-hover:text-[#5a8a6e] transition-colors duration-300" />
+      <Icon className="w-5 h-5 text-text-muted group-hover:text-white transition-colors duration-300" />
       <div className="flex flex-col items-start">
-        <span className="text-xs text-[#888888] uppercase tracking-wider font-medium">
+        <span className="text-xs text-text-muted uppercase tracking-wider font-medium">
           {labels[type]}
         </span>
-        <span className="text-sm text-[#f0f0f0] group-hover:text-[#5a8a6e] transition-colors duration-300">
+        <span className="text-sm text-text-primary group-hover:text-white transition-colors duration-300">
           {username}
         </span>
       </div>
-    </a>
+    </motion.a>
   );
 }

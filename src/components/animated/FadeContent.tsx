@@ -44,7 +44,7 @@ const FadeContent: React.FC<FadeContentProps> = ({
     const el = ref.current;
     if (!el) return;
 
-    let scrollerTarget: Element | string | null = container || document.getElementById('snap-main-container') || null;
+    let scrollerTarget: Element | string | null = container || null;
 
     if (typeof scrollerTarget === 'string') {
       scrollerTarget = document.querySelector(scrollerTarget);
@@ -86,7 +86,7 @@ const FadeContent: React.FC<FadeContentProps> = ({
 
     const st = ScrollTrigger.create({
       trigger: el,
-      scroller: scrollerTarget || window,
+      scroller: scrollerTarget || undefined,
       start: `top ${startPct}%`,
       once: true,
       onEnter: () => tl.play()

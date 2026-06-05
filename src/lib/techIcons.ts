@@ -14,7 +14,8 @@ const deviconMap: Record<string, string> = {
 
   // Frontend
   react: "react/react-original",
-  tailwindcss: "tailwindcss/tailwindcss-plain",
+  tailwindcss: "tailwindcss/tailwindcss-original",
+  tailwind: "tailwindcss/tailwindcss-original",
   html5: "html5/html5-original",
   html: "html5/html5-original",
   css3: "css3/css3-original",

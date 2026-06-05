@@ -23,7 +23,7 @@ export function Welcome() {
   }, []);
 
   return (
-    <section className="w-full min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
+    <section id="welcome" className="w-full min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
       <div className="z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center">
         {/* Name */}
         <motion.div
@@ -74,10 +74,10 @@ export function Welcome() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 0.7 }}
-          className="text-text-muted text-base sm:text-lg max-w-xl mb-10 leading-relaxed"
+          className="text-text-muted text-base sm:text-lg max-w-2xl mb-10 leading-relaxed"
         >
-          Building elegant digital experiences with modern technologies.
-          Passionate about clean code, thoughtful design, and impactful products.
+          Over the past 2 years, I’ve built and shipped web applications that solve real problems. 
+          I focus on writing clean, maintainable code, making solid design decisions, and working closely with teams to deliver reliable products people actually use.
         </motion.p>
 
         {/* Social Buttons with magnetic hover */}

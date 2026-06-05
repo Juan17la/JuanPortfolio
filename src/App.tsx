@@ -10,7 +10,7 @@ import { Welcome } from './components/Welcome.tsx'
 import { Projects } from './components/Projects.tsx'
 import { Stack } from './components/Stack.tsx'
 import { AboutMe } from './components/AboutMe.tsx'
-import { Contact } from './components/Contact.tsx'
+// import { Contact } from './components/Contact.tsx'
 
 function App() {
   const { mode } = useBackgroundMode();
@@ -51,13 +51,13 @@ function App() {
           <GlassNav />
 
           {/* Main Content */}
-          <main>
+          <main className='gap-5'>
             <Welcome />
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+            <div className="w-full h-px bg-linear-to-r from-transparent via-white/8 to-transparent" />
             <AboutMe />
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+            <div className="w-full h-px bg-linear-to-r from-transparent via-white/8 to-transparent" />
             <Stack />
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+            <div className="w-full h-px bg-linear-to-r from-transparent via-white/8 to-transparent" />
             <Projects />
             {/* <div className="w-full h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
             <Contact /> */}
@@ -70,7 +70,7 @@ function App() {
                 Juan Diego Lopez Arias &copy; {new Date().getFullYear()}
               </p>
               <p className="text-xs text-text-muted uppercase tracking-wider">
-                Built with React, Tailwind & Stardust
+                Built with love ❤️
               </p>
             </div>
           </footer>

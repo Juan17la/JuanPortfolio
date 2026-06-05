@@ -11,10 +11,11 @@ export default function GlassNav() {
   const tabRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
   const navLinks = [
+    { href: '#welcome', label: 'Start' },
     { href: '#about', label: 'About' },
     { href: '#stack', label: 'Stack' },
     { href: '#projects', label: 'Projects' },
-    { href: '#contact', label: 'Contact' },
+    // { href: '#contact', label: 'Contact' },
   ];
 
   const getPillPosition = useCallback(() => {

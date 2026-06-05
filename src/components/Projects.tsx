@@ -14,7 +14,7 @@ interface Project {
   specialities: string[];
   images: string[];
   category: string;
-  repositoryLink?: string;
+  repositoryLink?: string[];
   previewLink?: string;
 }
 

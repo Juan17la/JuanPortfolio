@@ -6,45 +6,45 @@
     "description": "AloMedia was engineered to address performance bottlenecks inherent to browser-based video editing, particularly when handling large media files. To mitigate upload latency and improve user experience, a proxy-based ingestion system was implemented, allowing users to interact immediately with compressed media while the original high-resolution asset uploads asynchronously. The system prioritizes seamless transition from proxy to source media to maintain editing fidelity.\n\nPreview accuracy posed additional architectural challenges, leading to a modular rendering approach where transformations (filters, scaling, rotation) are isolated by type to ensure deterministic visual output and maintain consistency between preview and final export.\n\nVideo export was a critical bottleneck due to high computational cost. This was solved by offloading rendering to a dedicated processing pipeline composed of an API layer and distributed workers. Redis was introduced as an intermediate storage layer for media chunks, reducing server load and avoiding heavy data transfer between services. These decisions reduced export times from ~40 minutes to ~6 minutes for a 3-minute video, achieving a significant improvement in throughput and system scalability.",
     "tech": ["react", "typescript", "java", "spring boot", "python", "postgresql"],
     "specialities": ["frontend", "backend", "distributed systems", "system design", "performance optimization"],
-    "images": ["assets/alomedia-1.jpg", "assets/alomedia-2.jpg", "assets/alomedia-3.jpg"],
+    "images": ["/assets/alomedia-1.jpeg", "/assets/alomedia-2.jpeg", "/assets/alomedia-3.jpeg"],
     "category": "starproject",
-    "repositoryLink": "",
-    "previewLink": ""
+    "repositoryLink": ["https://github.com/Juan17la/AloMediaReact", "https://github.com/Juan17la/AloMediaReact"],
+    "previewLink": "https://alo-media.vercel.app/"
   },
   {
     "id": 2,
-    "name": "Mikus Money",
-    "brief": "Transaction-safe fintech system with strict consistency and concurrency control.",
-    "description": "Mikus Money was designed to model real-world financial system constraints, focusing on transactional integrity under concurrent conditions. Idempotency mechanisms were implemented to prevent duplicate transaction execution caused by retries or network instability.\n\nTo ensure balance consistency, pessimistic locking was applied at the database level, guaranteeing that concurrent operations on the same account are serialized. This prevents race conditions where near-simultaneous transactions could otherwise lead to incorrect balances.\n\nThe system prioritizes correctness and data integrity over throughput, reflecting real-world fintech trade-offs where consistency is non-negotiable.",
-    "tech": ["react", "java", "spring boot", "postgresql"],
-    "specialities": ["backend", "system design", "data consistency"],
-    "images": ["assets/mikus-1.jpg", "assets/mikus-2.jpg", "assets/mikus-3.jpg"],
-    "category": "sillyproject",
-    "repositoryLink": "",
-    "previewLink": ""
-  },
-  {
-    "id": 3,
-    "name": "University Management System",
-    "brief": "Workflow optimization system for contract lifecycle management with auditability.",
-    "description": "This system was built to optimize and secure the internship contract lifecycle within a university environment. The original process relied on manual steps and spreadsheet-based tracking, introducing delays and lack of traceability.\n\nThe platform replaces this with a structured workflow engine and persistent storage, reducing processing time by approximately 30 minutes per phase. Contracts are managed through well-defined states, with role-based access control ensuring that only authorized actors can perform transitions.\n\nDocument handling was redesigned by migrating from local/Excel-based storage to a centralized database combined with a secure file storage bucket. This guarantees immutability, historical traceability, and improved access control for audit and compliance purposes.",
-    "tech": ["java", "spring boot", "postgresql"],
-    "specialities": ["backend", "system design", "workflow systems"],
-    "images": ["assets/ums-1.jpg", "assets/ums-2.jpg", "assets/ums-3.jpg"],
-    "category": "personalproject",
-    "repositoryLink": "",
-    "previewLink": ""
-  },
-  {
-    "id": 4,
     "name": "Downforce Analytics",
     "brief": "Physics-based vehicle analysis platform using approximated aerodynamic models.",
     "description": "Downforce Analytics was developed to analyze and compare aerodynamic performance across multiple racing vehicles using publicly available data. The system models downforce behavior through simplified physics equations and approximations, enabling comparative analysis without access to proprietary datasets.\n\nOver 30 vehicle configurations were simulated, requiring normalization of inconsistent data sources and assumptions to maintain comparability. While the model introduces a measurable error margin due to approximation, it achieves realistic trends and relative accuracy, making it suitable for exploratory analysis.\n\nThe project emphasizes the translation of theoretical physics into practical software models, balancing accuracy with computational simplicity and data availability constraints.",
     "tech": ["html", "css", "javascript"],
     "specialities": ["frontend", "data analysis", "simulation"],
-    "images": ["assets/downforce-1.jpg", "assets/downforce-2.jpg", "assets/downforce-3.jpg"],
+    "images": ["/assets/f1analitics1.png", "/assets/f1analitics2.png", "/assets/f1analitics3.png"],
     "category": "personalproject",
-    "repositoryLink": "",
+    "repositoryLink": ["https://github.com/Juan17la/Downforce-Analitics.git"],
+    "previewLink": "https://juan17la.github.io/Downforce-Analitics/"
+  },
+  {
+    "id": 3,
+    "name": "Mikus Money",
+    "brief": "Transaction-safe fintech system with strict consistency and concurrency control.",
+    "description": "Mikus Money was designed to model real-world financial system constraints, focusing on transactional integrity under concurrent conditions. Idempotency mechanisms were implemented to prevent duplicate transaction execution caused by retries or network instability.\n\nTo ensure balance consistency, pessimistic locking was applied at the database level, guaranteeing that concurrent operations on the same account are serialized. This prevents race conditions where near-simultaneous transactions could otherwise lead to incorrect balances.\n\nThe system prioritizes correctness and data integrity over throughput, reflecting real-world fintech trade-offs where consistency is non-negotiable.",
+    "tech": ["react", "java", "spring boot", "postgresql"],
+    "specialities": ["backend", "system design", "data consistency"],
+    "images": ["/assets/Mikus1.png", "/assets/Mikus2.png", "/assets/Mikus3.png"],
+    "category": "sillyproject",
+    "repositoryLink": ["https://github.com/Juan17la/MikusMoneyReact", "https://github.com/Juan17la/MikusMoney"],
+    "previewLink": ""
+  },
+  {
+    "id": 4,
+    "name": "University Management System",
+    "brief": "Workflow optimization system for contract lifecycle management with auditability.",
+    "description": "This system was built to optimize and secure the internship contract lifecycle within a university environment. The original process relied on manual steps and spreadsheet-based tracking, introducing delays and lack of traceability.\n\nThe platform replaces this with a structured workflow engine and persistent storage, reducing processing time by approximately 30 minutes per phase. Contracts are managed through well-defined states, with role-based access control ensuring that only authorized actors can perform transitions.\n\nDocument handling was redesigned by migrating from local/Excel-based storage to a centralized database combined with a secure file storage bucket. This guarantees immutability, historical traceability, and improved access control for audit and compliance purposes.",
+    "tech": ["java", "spring boot", "postgresql"],
+    "specialities": ["backend", "system design", "workflow systems"],
+    "images": ["/assets/gcucc.png"],
+    "category": "personalproject",
+    "repositoryLink": ["https://github.com/Juan17la/UniversityAgreementManager.git"],
     "previewLink": ""
   }
 ]

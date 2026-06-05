@@ -68,7 +68,7 @@ export function AboutMe() {
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
               viewport={viewportSettings}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeInOut" }}
+              transition={{ duration: 0.4, delay: 0.1, ease: "easeInOut" }}
             />
             {/* Path 2: Card 2 -> Card 3 */}
             <motion.path
@@ -79,7 +79,7 @@ export function AboutMe() {
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
               viewport={viewportSettings}
-              transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
+              transition={{ duration: 0.4, delay: 0.6, ease: "easeInOut" }}
             />
             {/* Path 3: Card 3 -> Card 4 */}
             <motion.path
@@ -90,7 +90,7 @@ export function AboutMe() {
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
               viewport={viewportSettings}
-              transition={{ duration: 0.6, delay: 2.0, ease: "easeInOut" }}
+              transition={{ duration: 0.4, delay: 1.1, ease: "easeInOut" }}
             />
             {/* Path 4: Card 4 -> Card 5 */}
             <motion.path
@@ -101,7 +101,7 @@ export function AboutMe() {
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
               viewport={viewportSettings}
-              transition={{ duration: 0.6, delay: 2.9, ease: "easeInOut" }}
+              transition={{ duration: 0.4, delay: 1.6, ease: "easeInOut" }}
             />
 
             {/* Junction nodes - pop in after each path draws */}
@@ -113,7 +113,7 @@ export function AboutMe() {
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={viewportSettings}
-              transition={{ duration: 0.3, delay: 0.7, ease: "backOut" }}
+              transition={{ duration: 0.3, delay: 0.4, ease: "backOut" }}
               style={{ transformOrigin: '55px 16px' }}
             />
             <motion.circle
@@ -124,7 +124,7 @@ export function AboutMe() {
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={viewportSettings}
-              transition={{ duration: 0.3, delay: 1.6, ease: "backOut" }}
+              transition={{ duration: 0.3, delay: 0.9, ease: "backOut" }}
               style={{ transformOrigin: '55px 44px' }}
             />
             <motion.circle
@@ -135,7 +135,7 @@ export function AboutMe() {
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={viewportSettings}
-              transition={{ duration: 0.3, delay: 2.5, ease: "backOut" }}
+              transition={{ duration: 0.3, delay: 1.4, ease: "backOut" }}
               style={{ transformOrigin: '20px 66px' }}
             />
           </svg>
@@ -156,7 +156,7 @@ export function AboutMe() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewportSettings}
-              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 0.9 }}
+              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 0.5 }}
             >
               <NodeCard title={nodes[1].title} description={nodes[1].description} index={1} />
             </motion.div>
@@ -166,7 +166,7 @@ export function AboutMe() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewportSettings}
-              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 1.8 }}
+              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 1.0 }}
             >
               <NodeCard title={nodes[2].title} description={nodes[2].description} index={2} />
             </motion.div>
@@ -176,7 +176,7 @@ export function AboutMe() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewportSettings}
-              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 2.7 }}
+              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 1.5 }}
             >
               <NodeCard title={nodes[3].title} description={nodes[3].description} index={3} />
             </motion.div>
@@ -186,7 +186,7 @@ export function AboutMe() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewportSettings}
-              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 3.4 }}
+              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 2.0 }}
             >
               <NodeCard title={nodes[4].title} description={nodes[4].description} index={4} />
             </motion.div>
@@ -203,7 +203,7 @@ export function AboutMe() {
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             viewport={viewportSettings}
-            transition={{ duration: 2.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
           />
           <div className="flex flex-col gap-8">
             {nodes.map((node, index) => (
@@ -214,7 +214,7 @@ export function AboutMe() {
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={viewportSettings}
-                  transition={{ delay: index * 0.35 + 0.2, duration: 0.3, ease: "backOut" }}
+                  transition={{ delay: index * 0.18 + 0.15, duration: 0.3, ease: "backOut" }}
                 />
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -224,7 +224,7 @@ export function AboutMe() {
                     type: 'spring',
                     stiffness: 70,
                     damping: 16,
-                    delay: index * 0.35 + 0.35,
+                    delay: index * 0.18 + 0.30,
                   }}
                 >
                   <NodeCard title={node.title} description={node.description} index={index} />

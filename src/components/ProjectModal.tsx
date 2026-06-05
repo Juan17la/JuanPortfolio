@@ -232,20 +232,18 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
               {/* Links */}
               <div className="flex flex-wrap gap-3">
-                {project.repositoryLink && project.repositoryLink.length > 0 && (
-                  project.repositoryLink.map((link, i) => (
-                    <a
-                      key={i}
-                      href={link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-wider rounded-md bg-white/10 border border-white/20 text-text-primary hover:bg-white/20 transition-colors duration-200"
-                    >
-                      <Code className="w-4 h-4" />
-                      Repository {project.repositoryLink.length > 1 ? i + 1 : ""}
-                    </a>
-                  ))
-                )}
+                {(project.repositoryLink ?? []).map((link, i, arr) => (
+                  <a
+                    key={i}
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-wider rounded-md bg-white/10 border border-white/20 text-text-primary hover:bg-white/20 transition-colors duration-200"
+                  >
+                    <Code className="w-4 h-4" />
+                    Repository {arr.length > 1 ? i + 1 : ""}
+                  </a>
+                ))}
                 {project.previewLink && (
                   <a
                     href={project.previewLink}

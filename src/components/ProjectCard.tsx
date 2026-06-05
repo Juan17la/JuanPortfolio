@@ -151,21 +151,19 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 
         {/* Links */}
         <div className="flex flex-wrap items-end gap-2 mt-auto">
-          {project.repositoryLink && project.repositoryLink.length > 0 && (
-            project.repositoryLink.map((link, i) => (
-              <a
-                key={i}
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1 text-white text-[10px] uppercase tracking-wider rounded-md bg-white/35 border border-white/75 hover:bg-white/50 transition-colors duration-200"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Code className="w-3 h-3" />
-                Repository {project.repositoryLink.length > 1 ? i + 1 : ""}
-              </a>
-            ))
-          )}
+          {(project.repositoryLink ?? []).map((link, i, arr) => (
+            <a
+              key={i}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 text-white text-[10px] uppercase tracking-wider rounded-md bg-white/35 border border-white/75 hover:bg-white/50 transition-colors duration-200"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Code className="w-3 h-3" />
+              Repository {arr.length > 1 ? i + 1 : ""}
+            </a>
+          ))}
           {project.previewLink && (
             <a
               href={project.previewLink}

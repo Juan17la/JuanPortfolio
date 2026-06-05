@@ -1,5 +1,5 @@
-import { NodeCard } from "./NodeCard";
 import { motion } from 'motion/react';
+import { NodeCard } from "./NodeCard";
 import AnimatedSection from "./animated/AnimatedSection";
 
 const nodes = [
@@ -30,6 +30,8 @@ const nodes = [
   },
 ];
 
+const viewportSettings = { once: true, margin: '-80px' as const };
+
 export function AboutMe() {
   return (
     <section className="relative w-full px-6 py-24" id="about">
@@ -50,20 +52,92 @@ export function AboutMe() {
 
         {/* Desktop Node Graph Container */}
         <div className="relative hidden md:block" style={{ minHeight: "820px" }}>
-          {/* SVG Connection Lines - monochrome */}
+          {/* SVG Connection Lines - sequential draw animation */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none z-0"
             viewBox="0 0 100 100"
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="M 20 8 Q 38 5, 55 16" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="0.5" />
-            <path d="M 60 24 Q 62 32, 55 44" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="0.5" />
-            <path d="M 48 56 Q 32 58, 20 66" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="0.5" />
-            <path d="M 20 74 Q 25 82, 38 86" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="0.5" />
-            <circle cx="55" cy="16" r="0.9" fill="rgba(255,255,255,0.6)" />
-            <circle cx="55" cy="44" r="0.9" fill="rgba(255,255,255,0.6)" />
-            <circle cx="20" cy="66" r="0.9" fill="rgba(255,255,255,0.6)" />
+            {/* Path 1: Card 1 -> Card 2 */}
+            <motion.path
+              d="M 20 8 Q 38 5, 55 16"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              strokeWidth="0.5"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 1 }}
+              viewport={viewportSettings}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeInOut" }}
+            />
+            {/* Path 2: Card 2 -> Card 3 */}
+            <motion.path
+              d="M 60 24 Q 62 32, 55 44"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              strokeWidth="0.5"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 1 }}
+              viewport={viewportSettings}
+              transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
+            />
+            {/* Path 3: Card 3 -> Card 4 */}
+            <motion.path
+              d="M 48 56 Q 32 58, 20 66"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              strokeWidth="0.5"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 1 }}
+              viewport={viewportSettings}
+              transition={{ duration: 0.6, delay: 2.0, ease: "easeInOut" }}
+            />
+            {/* Path 4: Card 4 -> Card 5 */}
+            <motion.path
+              d="M 20 74 Q 25 82, 38 86"
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              strokeWidth="0.5"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 1 }}
+              viewport={viewportSettings}
+              transition={{ duration: 0.6, delay: 2.9, ease: "easeInOut" }}
+            />
+
+            {/* Junction nodes - pop in after each path draws */}
+            <motion.circle
+              cx="55"
+              cy="16"
+              r="0.9"
+              fill="rgba(255,255,255,0.6)"
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={viewportSettings}
+              transition={{ duration: 0.3, delay: 0.7, ease: "backOut" }}
+              style={{ transformOrigin: '55px 16px' }}
+            />
+            <motion.circle
+              cx="55"
+              cy="44"
+              r="0.9"
+              fill="rgba(255,255,255,0.6)"
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={viewportSettings}
+              transition={{ duration: 0.3, delay: 1.6, ease: "backOut" }}
+              style={{ transformOrigin: '55px 44px' }}
+            />
+            <motion.circle
+              cx="20"
+              cy="66"
+              r="0.9"
+              fill="rgba(255,255,255,0.6)"
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={viewportSettings}
+              transition={{ duration: 0.3, delay: 2.5, ease: "backOut" }}
+              style={{ transformOrigin: '20px 66px' }}
+            />
           </svg>
 
           {/* Nodes */}
@@ -71,8 +145,8 @@ export function AboutMe() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 0.1 }}
+              viewport={viewportSettings}
+              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 0.0 }}
             >
               <NodeCard title={nodes[0].title} description={nodes[0].description} index={0} />
             </motion.div>
@@ -81,8 +155,8 @@ export function AboutMe() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 0.2 }}
+              viewport={viewportSettings}
+              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 0.9 }}
             >
               <NodeCard title={nodes[1].title} description={nodes[1].description} index={1} />
             </motion.div>
@@ -91,8 +165,8 @@ export function AboutMe() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 0.3 }}
+              viewport={viewportSettings}
+              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 1.8 }}
             >
               <NodeCard title={nodes[2].title} description={nodes[2].description} index={2} />
             </motion.div>
@@ -101,8 +175,8 @@ export function AboutMe() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 0.4 }}
+              viewport={viewportSettings}
+              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 2.7 }}
             >
               <NodeCard title={nodes[3].title} description={nodes[3].description} index={3} />
             </motion.div>
@@ -111,8 +185,8 @@ export function AboutMe() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 0.5 }}
+              viewport={viewportSettings}
+              transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 3.4 }}
             >
               <NodeCard title={nodes[4].title} description={nodes[4].description} index={4} />
             </motion.div>
@@ -121,24 +195,37 @@ export function AboutMe() {
 
         {/* Mobile: vertical stack with timeline */}
         <div className="md:hidden relative">
-          <div
-            className="absolute left-4.75 top-4 bottom-4 w-px"
+          <motion.div
+            className="absolute left-4.75 top-4 bottom-4 w-px origin-top"
             style={{
               background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.4) 5%, rgba(255,255,255,0.4) 95%, transparent)",
             }}
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={viewportSettings}
+            transition={{ duration: 2.0, ease: "easeInOut" }}
           />
           <div className="flex flex-col gap-8">
             {nodes.map((node, index) => (
               <div key={index} className="relative pl-12">
-                <div
+                <motion.div
                   className="absolute left-3.5 top-6 w-3 h-3 rounded-full border-2 border-white/30 bg-background z-10"
                   style={{ boxShadow: "0 0 8px rgba(255,255,255,0.2)" }}
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={viewportSettings}
+                  transition={{ delay: index * 0.35 + 0.2, duration: 0.3, ease: "backOut" }}
                 />
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ type: 'spring', stiffness: 70, damping: 16, delay: index * 0.08 }}
+                  viewport={viewportSettings}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 70,
+                    damping: 16,
+                    delay: index * 0.35 + 0.35,
+                  }}
                 >
                   <NodeCard title={node.title} description={node.description} index={index} />
                 </motion.div>

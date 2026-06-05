@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Star, User, Zap } from "lucide-react";
+import { Star, User, Zap, Code, ExternalLink } from "lucide-react";
 import { getTechIconUrl } from "../lib/techIcons";
 
 interface Project {
@@ -11,6 +11,8 @@ interface Project {
   specialities: string[];
   images: string[];
   category: string;
+  repositoryLink?: string;
+  previewLink?: string;
 }
 
 const categoryConfig: Record<string, { label: string; color: string; icon: React.ReactNode }> = {
@@ -21,9 +23,10 @@ const categoryConfig: Record<string, { label: string; color: string; icon: React
 
 interface ProjectCardProps {
   project: Project;
+  onSelect: (project: Project) => void;
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, onSelect }: ProjectCardProps) {
   const [activeImage, setActiveImage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -55,13 +58,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article
       ref={cardRef}
-      className="relative w-full glass-card overflow-hidden group"
+      className="relative min-w-full min-h-full glass-card overflow-hidden group cursor-pointer"
       style={{ '--mouse-x': '50%', '--mouse-y': '50%' } as React.CSSProperties}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
         setIsHovered(false);
         setActiveImage(0);
       }}
+      onClick={() => onSelect(project)}
     >
       {/* Category tag - keeps its color */}
       <div
@@ -84,9 +88,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
             className="absolute inset-0 flex items-center justify-center transition-opacity duration-700"
             style={{ opacity: i === activeImage ? 1 : 0 }}
           >
-            <div className="w-full h-full flex items-center justify-center bg-surface/50">
-              <span className="text-text-muted text-xs font-medium">{img}</span>
-            </div>
+            <img
+              src={img}
+              alt={`${project.name} screenshot ${i + 1}`}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
         ))}
         {/* Image indicator dots */}
@@ -104,7 +111,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
         {/* Hover hint */}
         <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-5">
-          <span className="text-xs text-white/70 uppercase tracking-widest">Hover to preview</span>
+          <span className="text-xs text-white/70 uppercase tracking-widest">Click to view details</span>
         </div>
       </div>
 
@@ -131,7 +138,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {/* Specialities */}
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1.5 mb-4">
           {project.specialities.map((spec) => (
             <span
               key={spec}
@@ -140,6 +147,34 @@ export function ProjectCard({ project }: ProjectCardProps) {
               {spec}
             </span>
           ))}
+        </div>
+
+        {/* Links */}
+        <div className="flex flex-wrap items-end gap-2 mt-auto">
+          {project.repositoryLink && (
+            <a
+              href={project.repositoryLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 text-white text-[10px] uppercase tracking-wider rounded-md bg-white/35 border border-white/75 hover:bg-white/50 transition-colors duration-200"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Code className="w-3 h-3" />
+              Repository
+            </a>
+          )}
+          {project.previewLink && (
+            <a
+              href={project.previewLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 text-white text-[10px] uppercase tracking-wider rounded-md bg-white/35 border border-white/75 hover:bg-white/50 transition-colors duration-200"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <ExternalLink className="w-3 h-3" />
+              Preview
+            </a>
+          )}
         </div>
       </div>
     </article>

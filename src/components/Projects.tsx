@@ -1,10 +1,26 @@
+import { useState } from "react";
 import { motion } from 'motion/react';
 import { ProjectCard } from "./ProjectCard";
-import { ArrowUpRight } from "lucide-react";
+import { ProjectModal } from "./ProjectModal";
 import projectsData from "../data/projects.json";
 import AnimatedSection from "./animated/AnimatedSection";
 
+interface Project {
+  id: number;
+  name: string;
+  brief: string;
+  description: string;
+  tech: string[];
+  specialities: string[];
+  images: string[];
+  category: string;
+  repositoryLink?: string;
+  previewLink?: string;
+}
+
 export function Projects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <section className="relative w-full px-6 py-24" id="projects">
       {/* Centered Section Header */}
@@ -36,23 +52,19 @@ export function Projects() {
               delay: index * 0.06,
             }}
           >
-            <ProjectCard project={project} />
+            <ProjectCard
+              project={project as Project}
+              onSelect={setSelectedProject}
+            />
           </motion.div>
         ))}
       </div>
 
-      {/* View all link */}
-      <AnimatedSection delay={0.2}>
-        <div className="max-w-6xl mx-auto flex justify-center">
-          <a
-            href="/projects"
-            className="group inline-flex items-center gap-3 px-8 py-4 glass-container text-text-primary font-medium hover:border-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 transition-all duration-300"
-          >
-            <span className="font-display text-lg">View All Projects</span>
-            <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </a>
-        </div>
-      </AnimatedSection>
+      {/* Project Modal */}
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 }

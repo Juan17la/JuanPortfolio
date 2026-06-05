@@ -59,8 +59,8 @@ function App() {
             <Stack />
             <div className="w-full h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
             <Projects />
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
-            <Contact />
+            {/* <div className="w-full h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+            <Contact /> */}
           </main>
 
           {/* Footer */}

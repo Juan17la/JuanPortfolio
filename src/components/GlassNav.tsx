@@ -11,9 +11,9 @@ export default function GlassNav() {
   const tabRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
   const navLinks = [
-    { href: '#projects', label: 'Projects' },
-    { href: '#stack', label: 'Stack' },
     { href: '#about', label: 'About' },
+    { href: '#stack', label: 'Stack' },
+    { href: '#projects', label: 'Projects' },
     { href: '#contact', label: 'Contact' },
   ];
 

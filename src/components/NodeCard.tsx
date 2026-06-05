@@ -26,7 +26,7 @@ export function NodeCard({ title, description, index }: NodeCardProps) {
   return (
     <div
       ref={cardRef}
-      className="relative glass-card overflow-visible p-6 group"
+      className="relative glass-card p-6 group"
       style={{ '--mouse-x': '50%', '--mouse-y': '50%' } as React.CSSProperties}
     >
       {/* Node number */}

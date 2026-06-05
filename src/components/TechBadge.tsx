@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { getTechIconUrl } from "../lib/techIcons";
 
 interface TechBadgeProps {
   name: string;
@@ -48,7 +49,7 @@ export function TechBadge({ name, icon, color, size = "md", className = "" }: Te
       }}
     >
       <img
-        src={`https://cdn.simpleicons.org/${icon}/white`}
+        src={getTechIconUrl(icon)}
         alt={`${name} icon`}
         className={size === "sm" ? "w-3.5 h-3.5" : size === "lg" ? "w-5 h-5" : "w-4 h-4"}
         loading="lazy"

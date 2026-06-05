@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Star, User, Zap } from "lucide-react";
+import { getTechIconUrl } from "../lib/techIcons";
 
 interface Project {
   id: number;
@@ -76,7 +77,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Image carousel area */}
-      <div className="relative w-full h-[180px] overflow-hidden bg-surface/40">
+      <div className="relative w-full h-45 overflow-hidden bg-surface/40">
         {project.images.map((img, i) => (
           <div
             key={i}
@@ -102,7 +103,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
         {/* Hover hint */}
-        <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[5]">
+        <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-5">
           <span className="text-xs text-white/70 uppercase tracking-widest">Hover to preview</span>
         </div>
       </div>
@@ -121,9 +122,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.tech.map((tech) => (
             <img
               key={tech}
-              src={`https://cdn.simpleicons.org/${tech}/ffffff`}
+              src={getTechIconUrl(tech)}
               alt={`${tech} icon`}
-              className="w-5 h-5 opacity-50 hover:opacity-100 transition-opacity duration-200"
+              className="w-5 h-5 opacity-90 hover:opacity-100 transition-opacity duration-200"
               loading="lazy"
             />
           ))}

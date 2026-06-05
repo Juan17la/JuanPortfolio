@@ -70,28 +70,11 @@ body::before {
 
 /* ── Monochrome Glassmorphism System ── */
 
-/*
-  Glass card
-  - Uses transform: translateZ(0) to force a GPU compositing layer.
-    This is critical: without it, browsers (especially Chromium on some
-    GPUs) rasterise the element together with the background and skip
-    the backdrop-filter blur entirely.
-  - backdrop-filter is declared before -webkit-backdrop-filter so
-    modern browsers use the standard property.
-  - The gradient border is built with individual mask-* properties
-    instead of the shorthand, because CSS minifiers (Lightning CSS,
-    esbuild, etc.) corrupt the shorthand when they deduplicate or
-    reorder declarations.
-*/
-
 .glass-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.025);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 1rem;
-  /* Force GPU compositing layer — required for stable backdrop-filter */
-  transform: translateZ(0);
-  will-change: transform;
   backdrop-filter: blur(20px) saturate(1.2);
   -webkit-backdrop-filter: blur(20px) saturate(1.2);
   box-shadow:
@@ -131,7 +114,6 @@ body::before {
   mask-origin: content-box, border-box;
   mask-composite: exclude;
   pointer-events: none;
-  z-index: -1;
 }
 
 /* White radial spotlight following cursor */
@@ -156,7 +138,7 @@ body::before {
 }
 
 .glass-card:hover {
-  transform: translateY(-3px) translateZ(0);
+  transform: translateY(-3px);
   border-color: rgba(255, 255, 255, 0.30);
   box-shadow:
     0 12px 40px rgba(0, 0, 0, 0.35),
@@ -167,11 +149,9 @@ body::before {
 /* Glass container - progressive edge blur */
 .glass-container {
   position: relative;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 1.25rem;
-  transform: translateZ(0);
-  will-change: transform;
   backdrop-filter: blur(28px) saturate(1.2);
   -webkit-backdrop-filter: blur(28px) saturate(1.2);
   box-shadow:
@@ -212,8 +192,6 @@ body::before {
   background: rgba(10, 10, 15, 0.65);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 9999px;
-  transform: translateZ(0);
-  will-change: transform;
   backdrop-filter: blur(24px) saturate(1.2);
   -webkit-backdrop-filter: blur(24px) saturate(1.2);
   box-shadow:
@@ -240,6 +218,19 @@ body::before {
   color: #fff;
 }
 
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(20px)) {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .glass-container {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .glass-nav {
+    background: rgba(10, 10, 15, 0.85);
+  }
+}
+
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -249,6 +240,6 @@ body::before {
     transition: none;
   }
   .glass-card:hover {
-    transform: translateZ(0);
+    transform: none;
   }
 }

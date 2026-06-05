@@ -141,7 +141,7 @@ export function AboutMe() {
           </svg>
 
           {/* Nodes */}
-          <div className="absolute left-[0%] top-[2%] w-[44%]">
+          <div className="absolute left-[0%] top-[2%] w-[44%] z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -151,7 +151,7 @@ export function AboutMe() {
               <NodeCard title={nodes[0].title} description={nodes[0].description} index={0} />
             </motion.div>
           </div>
-          <div className="absolute left-[53%] top-[14%] w-[44%]">
+          <div className="absolute left-[53%] top-[14%] w-[44%] z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -161,7 +161,7 @@ export function AboutMe() {
               <NodeCard title={nodes[1].title} description={nodes[1].description} index={1} />
             </motion.div>
           </div>
-          <div className="absolute left-[46%] top-[42%] w-[44%]">
+          <div className="absolute left-[46%] top-[42%] w-[44%] z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -171,7 +171,7 @@ export function AboutMe() {
               <NodeCard title={nodes[2].title} description={nodes[2].description} index={2} />
             </motion.div>
           </div>
-          <div className="absolute left-[0%] top-[58%] w-[44%]">
+          <div className="absolute left-[0%] top-[58%] w-[44%] z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -181,7 +181,7 @@ export function AboutMe() {
               <NodeCard title={nodes[3].title} description={nodes[3].description} index={3} />
             </motion.div>
           </div>
-          <div className="absolute left-[38%] top-[85%] w-[50%]">
+          <div className="absolute left-[38%] top-[85%] w-[50%] z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}

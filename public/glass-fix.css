@@ -1,0 +1,19 @@
+.glass-card {
+  backdrop-filter: blur(20px) saturate(1.2);
+}
+
+.glass-container {
+  backdrop-filter: blur(28px) saturate(1.2);
+}
+
+.glass-container::before {
+  backdrop-filter: blur(60px);
+}
+
+.glass-nav {
+  backdrop-filter: blur(24px) saturate(1.2);
+}
+
+.tab-glow {
+  backdrop-filter: blur(12px);
+}

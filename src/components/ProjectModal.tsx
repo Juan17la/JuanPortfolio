@@ -168,7 +168,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                     <button
                       key={i}
                       onClick={() => setActiveImage(i)}
-                      className={`flex-shrink-0 w-20 h-14 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+                      className={`shrink-0 w-20 h-14 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
                         i === activeImage
                           ? "border-white/60 opacity-100"
                           : "border-transparent opacity-50 hover:opacity-80"
@@ -263,7 +263,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           <AnimatePresence>
             {lightboxImage && (
               <motion.div
-                className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90"
+                className="fixed inset-0 z-60 flex items-center justify-center bg-black/90"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}

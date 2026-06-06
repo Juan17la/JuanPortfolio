@@ -142,7 +142,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
           {project.specialities.map((spec) => (
             <span
               key={spec}
-              className="px-2 py-0.5 text-[10px] uppercase tracking-wider rounded-md bg-white/5 text-text-muted border border-white/10"
+              className="px-2 py-0.5 text-[10px] text-white/70 uppercase tracking-wider rounded-md bg-white/5 border border-white/10"
             >
               {spec}
             </span>

@@ -127,6 +127,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                     src={project.images[activeImage]}
                     alt={`${project.name} screenshot ${activeImage + 1}`}
                     className="w-full h-full object-cover cursor-zoom-in"
+                    loading="lazy"
                     onClick={() => setLightboxImage(project.images[activeImage])}
                   />
                   {/* Image indicator dots */}
@@ -178,6 +179,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                         src={img}
                         alt={`${project.name} thumbnail ${i + 1}`}
                         className="w-full h-full object-cover"
+                        loading="lazy"
                       />
                     </button>
                   ))}
@@ -273,6 +275,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   src={lightboxImage}
                   alt="Full size preview"
                   className="max-w-[95vw] max-h-[90vh] object-contain rounded-lg"
+                  loading="lazy"
                   initial={{ scale: 0.9 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0.9 }}

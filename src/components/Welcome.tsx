@@ -76,8 +76,7 @@ export function Welcome() {
           transition={{ type: 'spring', stiffness: 70, damping: 16, delay: 0.7 }}
           className="text-text-muted text-base sm:text-lg max-w-2xl mb-10 leading-relaxed"
         >
-          Over the past 2 years, I’ve built and shipped web applications that solve real problems. 
-          I focus on writing clean, maintainable code, making solid design decisions, and working closely with teams to deliver reliable products people actually use.
+          Fullstack Software Engineer focused on building clean, maintainable systems and delivering reliable products. Strong collaborator, quick learner, and committed to writing code that scales and lasts.
         </motion.p>
 
         {/* Social Buttons with magnetic hover */}
